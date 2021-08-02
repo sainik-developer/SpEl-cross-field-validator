@@ -48,9 +48,8 @@ public class CustomerDTO {
 ```
 
 below is a list of some javax validator 
-|      A          |          B        |         C     |    D           |
-|---------------- | ----------------- | ------------- | -------------- |
 | AssertFalse     |     Future        | NotBlank      | Pattern        |
+|---------------- | ----------------- | ------------- | -------------- |
 | AssertTrue      |  FutureOrPresent  | NotEmpty      | Positive       |
 | DecimalMax      | Max               | NotNull       | PositiveOrZero |
 | DecimalMin      | Min               | Null          | Size           |
