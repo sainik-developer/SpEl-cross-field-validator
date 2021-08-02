@@ -136,8 +136,10 @@ Which is easy to do but not very reusable way to implement it, suppose there is 
 public class CustomerValidatorImpl implements ConstraintValidator<CrossFieldValidator, CustomerDTO> {
  @Override
  public boolean isValid(CustomerDTO customerDTO, ConstraintValidatorContext context) {
-     return (custmerDTO.getCustomerType() == ORGANIZATION  && StringUtils.isEmpty(custmerDTO.getSurname()) && Objects.isNull(custmerDTO.getDOB()) && Objects.nonNull(custmerDTO.getDOI())) 
-            || (custmerDTO.getCustomerType() == PERSON && !StringUtils.isEmpty(custmerDTO.getSurname()) && Objects.isNull(custmerDTO.getDOI()) && Objects.nonNull(custmerDTO.getDOB()));
+     return (custmerDTO.getCustomerType() == ORGANIZATION  && StringUtils.isEmpty(custmerDTO.getSurname()) 
+                && Objects.isNull(custmerDTO.getDOB()) && Objects.nonNull(custmerDTO.getDOI())) 
+            || (custmerDTO.getCustomerType() == PERSON && !StringUtils.isEmpty(custmerDTO.getSurname()) 
+                && Objects.isNull(custmerDTO.getDOI()) && Objects.nonNull(custmerDTO.getDOB()));
  }
 }
 ``` 
@@ -156,8 +158,10 @@ if we can declare at DTO level it gives below positives
 ```java
 @Data
 @CrossFieldValidator(groups = {PostMapping.class, PutMapping.class}, conditions = {
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION", THEN = "surname==null"),
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON", THEN = "surname!=null AND !surname.isEmpty()")
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION", 
+                                    THEN = "surname==null"),
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON", 
+                                    THEN = "surname!=null AND !surname.isEmpty()")
 })
 public class CustomerDTO {
     @NotEmpty(groups = PostMapping.class)
