@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @CrossFieldValidator(groups = {PostMapping.class, PutMapping.class}, conditions = {
         @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION", THEN = "surname==null"),
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION", THEN = "surname!=null AND !surname.isEmpty()")
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON", THEN = "surname!=null AND !surname.isEmpty()")
 })
 public class CustomerDTO {
     @NotEmpty(groups = PostMapping.class)
