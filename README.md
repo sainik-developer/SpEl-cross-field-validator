@@ -48,31 +48,14 @@ public class CustomerDTO {
 ```
 
 below is a list of some javax validator 
-
-|  Validator      |
-| --------------- |
-| AssertFalse     |
-| AssertTrue      |
-| DecimalMax      |
-| DecimalMin      |
-| Digits          |
-| Email           |
-| Future          |  
-| FutureOrPresent |
-| Max             |  
-| Min             |
-| Negative        |
-| NegativeOrZero  |
-| NotBlank        |
-| NotEmpty        | 
-| NotNull         |  
-| Null            |
-| Past            | 
-| PastOrPresent   |
-| Pattern         | 
-| Positive        |  
-| PositiveOrZero  | 
-| Size            |
+|      A          |          B        |         C     |    D           |
+|---------------- | ----------------- | ------------- | -------------- |
+| AssertFalse     |     Future        | NotBlank      | Pattern        |
+| AssertTrue      |  FutureOrPresent  | NotEmpty      | Positive       |
+| DecimalMax      | Max               | NotNull       | PositiveOrZero |
+| DecimalMin      | Min               | Null          | Size           |
+| Digits          | Negative          | Past          |                | 
+| Email           | NegativeOrZero    | PastOrPresent |                | 
 
 But none of the standard validator address the cross validation of field value. which is very commonly developer faces while developing, and which are resolved using custom validator at class level.
 Generally developer resolves the issue as below when there is a need of cross field validation of DTO. developer will create a validator at class level for below use case 
