@@ -93,11 +93,8 @@ public class CustomerDTO {
 @Documented
 public @interface CustomerValidator {
     String message() default "failed!";
-
     Class<?>[] groups() default { };
-
     Class<? extends Payload>[]payload() default {};
-
     SpElCrossFieldCondition[] conditions();
 }
 ``` 
@@ -105,8 +102,10 @@ public @interface CustomerValidator {
 public class CustomerValidatorImpl implements ConstraintValidator<CrossFieldValidator, CustomerDTO> {
  @Override
  public boolean isValid(CustomerDTO customerDTO, ConstraintValidatorContext context) {
-     return (custmerDTO.getCustomerType() == ORGANIZATION  && StringUtils.isEmpty(custmerDTO.getSurname())) 
-            || (custmerDTO.getCustomerType() == PERSON && !StringUtils.isEmpty(custmerDTO.getSurname())) ;
+     return (custmerDTO.getCustomerType() == ORGANIZATION  
+                && StringUtils.isEmpty(custmerDTO.getSurname())) 
+            || (custmerDTO.getCustomerType() == PERSON 
+                && !StringUtils.isEmpty(custmerDTO.getSurname())) ;
  }
 }
 ``` 
@@ -119,10 +118,14 @@ Which is easy to do but not very reusable way to implement it, suppose there is 
 public class CustomerValidatorImpl implements ConstraintValidator<CrossFieldValidator, CustomerDTO> {
  @Override
  public boolean isValid(CustomerDTO customerDTO, ConstraintValidatorContext context) {
-     return (custmerDTO.getCustomerType() == ORGANIZATION  && StringUtils.isEmpty(custmerDTO.getSurname()) 
-                && Objects.isNull(custmerDTO.getDOB()) && Objects.nonNull(custmerDTO.getDOI())) 
-            || (custmerDTO.getCustomerType() == PERSON && !StringUtils.isEmpty(custmerDTO.getSurname()) 
-                && Objects.isNull(custmerDTO.getDOI()) && Objects.nonNull(custmerDTO.getDOB()));
+     return (custmerDTO.getCustomerType() == ORGANIZATION  
+                && StringUtils.isEmpty(custmerDTO.getSurname()) 
+                && Objects.isNull(custmerDTO.getDOB()) 
+                && Objects.nonNull(custmerDTO.getDOI())) 
+                || (custmerDTO.getCustomerType() == PERSON 
+                && !StringUtils.isEmpty(custmerDTO.getSurname()) 
+                && Objects.isNull(custmerDTO.getDOI()) 
+                && Objects.nonNull(custmerDTO.getDOB()));
  }
 }
 ``` 
