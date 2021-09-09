@@ -79,8 +79,7 @@ Below is a sample class with fields and validation requirements as below.
 6. `customerType` must not be empty and one of the value of enum 
 [CustomerType.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/main/java/com/sf/customvalidator/constant/CustomerType.java)
 
-Below a try to impose those validation using `javax.validator`. Now we can see main issue is the conditional validation requirements which here mainly 
-depends on `customerType`.
+##### Below is a try to impose validations using `javax.validator`. 
 ```java
 public enum CustomerType {
     PERSON, ORGANIZATION
@@ -102,8 +101,9 @@ public class CustomerDTO {
     private CustomerType customerType;
 }
 ```
-It's not possible to enforce the restriction using default set of validator hence developer will opt for custom validator for `CustomerDTO` or write logic in service layer.
-Below is the way explained how it can done by custom validator.
+It's not possible to enforce the restriction using default validators hence developer will opt for custom validator for `CustomerDTO` or write logic in service layer.
+
+##### Below is the way explained how it can done by custom validator.
 ```java
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
