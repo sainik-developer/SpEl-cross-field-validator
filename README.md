@@ -1,32 +1,56 @@
 Generic inter-field bean validator using SpEl
 ---
-
 ## What is it ? 
-It's a generic validator by using spring exprssion language to specify contraints in Spring code. Improves readability by keeping validation logic in 
-same POJO/DTO . It's a type(Class) level validator where inter field constraints can be specified easily by SpEl. 
+It's a generic validator by using spring expression language to specify constraints.It improves readability by keeping validation logic in 
+same POJO/DTO . It's a Type(Class) level validator where inter field constraints can be specified easily using SpEl. 
 
-Known benefits:  
-1. Avoid writting custom validator for diffrent beans.
+Known benefits:
+1. Avoid witting custom validator for different beans.
 2. High readability by keeping constraints in same bean class.
 3. Allow to express validation logic by SpEl (Spring expression language)
 
 ## Technical background 
-### Brief hisroty of validator in Java world
-
-J2EE(Spring) is well familiar with POJO/DTO validator for long, it's well organized, standadised by java community 
+### Brief history of validator in Java
+    
+Spring(J2EE)) is well familiar with POJO/DTO validator for long, it's well organized, standardised by java community 
 and used by most. It's JSR(Java Specification Requests)-380 and implemented and maintained by hibernate community.
 Spring supports JSR-380 inherently.
 
 #### What's addressed by JSR-380
-JSR-380 requirements is captured in below artifact
-```html
-<dependency>
-    <groupId>javax.validation</groupId>
-    <artifactId>validation-api</artifactId>
-</dependency>
+`javax.validator.validation-api` has captured the JSR-380 requirements. It gives a framework to extend the validator as below.
+
+```java
+@Documented
+@Target({ ElementType.TYPE })
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = { CustomValidatorImpl.class })
+public @interface CustomValidator {
+    String message() default "failed!";
+
+    Class<?>[] groups() default { };
+
+    Class<? extends Payload>[]payload() default {};
+}
 ```
-It came up with an extendiable frameowkr which allows user to implement their requirements when default validators does not support so user can extends it.
-These are validators specified in `javax.validator.validation-api`
+
+```java
+public class CustomValidatorImpl implements ConstraintValidator<CrossFieldValidator, Object> {
+
+    @Override
+    public void initialize(CrossFieldValidator constraintAnnotation) {
+        // TODO
+    }
+    @Override
+    public boolean isValid(Object value, ConstraintValidatorContext context) {
+        // TODO
+    }
+}
+```
+A default set of validator is implemented by hibernate community. 
+
+
+It came up with an extendable framework which allows user to implement their requirements when default validators does not support so user can extends it.
+These are validators specified in 
 |                 |                   |               |                |
 |---------------- | ----------------- | ------------- | -------------- |
 | AssertFalse     | Future            | NotBlank      | Pattern        |
@@ -45,15 +69,8 @@ It's implemented by hibernate community and being used by spring
 </dependency>
 ```
 
-first contribution 
-
-Nature of all validator is either at class level or field level but does not address the inter field validator in a bean
-
-Second contribution 
-Framework to extend the validation for developer using given interfaces and classes in `javax.validator`. 
-
-### What is tried to bring 
-#### What is cross field validation ? 
+### What is new
+#### What is inter-field bean validator ? 
 Below is a sample class which as few field. But suppose there is a requirements as below 
 Validation requirements 
 1. `name` should be not empty string. 
@@ -172,10 +189,6 @@ public class AddressDTO {
     private String state;
 }
 ```
-What we just achieve by above annotation approach 
-
-1. generic code so no need to write logic using verbose language and framework syntax 
-2. higher code readability as validation is written upfront on DTO 
 
 #### How to write condition for the validation ? 
 We have to use our familiar spring expression language (SpEl) to expression our `IF` and `THEN` condition, Documentation of spring expression langauge can be found in 
