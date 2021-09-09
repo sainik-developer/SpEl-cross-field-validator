@@ -66,7 +66,7 @@ It's implemented by hibernate community and being used by spring
 </dependency>
 ```
 
-### What is new
+## Solution
 #### What is inter-field bean validator ? 
 Below is a sample class with fields and validation requirements as below.
 
@@ -215,7 +215,7 @@ We have to use our spring expression language (SpEl) as expression in `IF` and `
 #### Implementation of generic validater is here
 
 [SpEl Cross field validator](https://github.com/sainik-developer/SpEl-cross-field-validator)
-you can have a look at implementation I am here to  talk about how it should be used rather internal details as those are not very interesting. 
+you can have a look at implementation I am here talked about how it should be used rather internal details as those are not very interesting. 
 [CrossFieldValidatorImpl.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/main/java/com/sf/customvalidator/validator/CrossFieldValidatorImpl.java)
     
  
