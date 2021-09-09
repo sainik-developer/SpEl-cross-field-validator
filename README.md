@@ -70,7 +70,7 @@ It's implemented by hibernate community and being used by spring
 #### What is inter-field bean validator ? 
 Below is a sample class with fields and validation requirements as below.
 
-
+For CustomerDTO
 1. `name` must be not empty string. 
 2. `surname` must be non-empty for __PERSON__ and must be empty for __ORGANIZATION__ customerType.
 3. `dob` must be non-empty for __PERSON__ customerType but for __ORGANIZATION__ must be empty.
@@ -79,7 +79,11 @@ Below is a sample class with fields and validation requirements as below.
 6. `customerType` must not be empty and one of the value of enum 
 [CustomerType.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/main/java/com/sf/customvalidator/constant/CustomerType.java)
 
-##### Below is a try to impose validations using `javax.validator`. 
+For AddressDTO
+1. If country is USA or Germany then areaCode must be 5 digits long
+2. If country is India then areaCode must be 6 digits long
+
+##### Below is a try to impose validations using `javax.validator`.
 ```java
 public enum CustomerType {
     PERSON, ORGANIZATION
@@ -99,6 +103,20 @@ public class CustomerDTO {
     private List<@Valid AddressDTO> addresses;
     @NotEmpty(groups = PostMapping.class)
     private CustomerType customerType;
+}
+```
+```java
+public class AddressDTO {
+    @NotEmpty(groups = {PostMapping.class})
+    private String houseNo;
+    @NotEmpty(groups = {PostMapping.class})
+    private String lane;
+    @NotEmpty(groups = {PostMapping.class})
+    private Country country;
+    @NotEmpty(groups = {PostMapping.class})
+    private String areaCode;
+    @NotEmpty(groups = {PostMapping.class})
+    private String state;
 }
 ```
 It's not possible to enforce the restriction using default validators as there is no validator which cares about inter field constraints.
@@ -138,7 +156,7 @@ This solution is verbose and DTO specific. Hence what if there is conditional cr
 In that case using current approach we have to write an another custom validator related to `AddressDTO` which is generally done by developer. 
 
 #### What is solved using inter-field bean validator to address above issue ? 
-What if we just can declare our cross-field conditional restriction using annotation at POJO/DTO class as below
+What if we just can declare our __inter-field conditional restriction__ using annotation in DTO as below
 
 ```java
 @Data
@@ -171,8 +189,10 @@ public class CustomerDTO {
 ```java
 @Data
 @CrossFieldValidator(groups = {PostMapping.class}, conditions = {
-        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.example.constant.Country).US OR country == T(com.sf.customvalidator.example.constant.Country).DE", THEN = "areaCode != null && areaCode.length == 5"),
-        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.example.constant.Country).IND", THEN = "areaCode != null && areaCode.length == 6")
+        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.example.constant.Country).US OR country == T(com.sf.customvalidator.example.constant.Country).DE", 
+                                 THEN = "areaCode != null && Integer.parseInt(areaCode) <= 99999 && Integer.parseInt(areaCode) >= 10000"),
+        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.example.constant.Country).IND", 
+                                 THEN = "areaCode != null && Integer.parseInt(areaCode) <= 999999 && Integer.parseInt(areaCode) >= 100000")
 })
 public class AddressDTO {
     @NotEmpty(groups = {PostMapping.class})
