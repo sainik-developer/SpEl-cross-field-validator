@@ -48,14 +48,14 @@ public class CustomValidatorImpl implements ConstraintValidator<CrossFieldValida
 ```
 Default validators are implemented by hibernate community. Framework allows user to implement their requirements when default validators don't support the validation constraints.
 Default validators are below 
-|                 |                   |               |                |
-|---------------- | ----------------- | ------------- | -------------- |
-| AssertFalse     | Future            | NotBlank      | Pattern        |
-| AssertTrue      | FutureOrPresent   | NotEmpty      | Positive       |
-| DecimalMax      | Max               | NotNull       | PositiveOrZero |
-| DecimalMin      | Min               | Null          | Size           |
-| Digits          | Negative          | Past          |                | 
-| Email           | NegativeOrZero    | PastOrPresent |                | 
+|                 |                   |               |                |                  |
+|---------------- | ----------------- | ------------- | -------------- | ---------------- |
+| AssertFalse     | Future            | NotBlank      | Pattern        | Digits           |
+| AssertTrue      | FutureOrPresent   | NotEmpty      | Positive       | Negative         |
+| DecimalMax      | Max               | NotNull       | PositiveOrZero | Past             |
+| DecimalMin      | Min               | Null          | Size           | Email            |
+| NegativeOrZero  | PastOrPresent     |               |                |                  |
+
 
 It's implemented by hibernate community and being used by spring
 
