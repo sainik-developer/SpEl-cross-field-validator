@@ -209,13 +209,13 @@ public class AddressDTO {
 ```
 
 #### How to write condition for the validation ? 
-We have to use our familiar spring expression language (SpEl) to expression our `IF` and `THEN` condition, Documentation of spring expression langauge can be found in 
+We have to use our spring expression language (SpEl) as expression in `IF` and `THEN` conditions, Documentation of spring expression language can be found in 
 [SpEl](https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html) 
 
 #### Implementation of generic validater is here
 
 [SpEl Cross field validator](https://github.com/sainik-developer/SpEl-cross-field-validator)
-you can have a look at implemenation I am here to  talk about how it should be used rather internal details as those are not very interesting. 
+you can have a look at implementation I am here to  talk about how it should be used rather internal details as those are not very interesting. 
 [CrossFieldValidatorImpl.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/main/java/com/sf/customvalidator/validator/CrossFieldValidatorImpl.java)
     
  
