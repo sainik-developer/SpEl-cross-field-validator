@@ -68,7 +68,7 @@ It's implemented by hibernate community and being used by spring
 
 ### What is new
 #### What is inter-field bean validator ? 
-Below is a sample class with fields and validation requirements as below 
+Below is a sample class with fields and validation requirements as below.
 
 
 1. `name` should be not empty string. 
