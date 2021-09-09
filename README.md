@@ -1,8 +1,8 @@
 Generic inter-field bean validator using SpEl
 ---
 ## What is it ? 
-It's a generic validator using spring expression language to specify constraints.It improves readability by keeping validation logic in 
-same POJO/DTO . It's a Type(Class) level validator where inter field constraints can be specified easily using SpEl. 
+It's a generic validator using spring expression language(SpEl) to specify validation constraints.It improves readability by keeping validation logic in 
+same POJO/DTO and it's a Type(Class) level validator where inter field constraints can be specified using well known SpEl. 
 
 Known benefits:
 1. Avoid witting custom validator for different beans.
