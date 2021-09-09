@@ -12,9 +12,9 @@ Known benefits:
 ## Technical background 
 ### Brief history of validator in Java
     
-Spring(J2EE)) is well familiar with POJO/DTO validator for long, it's well organized, standardised by java community 
-and used by most. It's JSR(Java Specification Requests)-380 and implemented and maintained by hibernate community.
-Spring supports JSR-380 inherently.
+Spring(J2EE)) is well familiar with POJO/DTO validator for a while, it's well organized, standardised by java community 
+and used by most. It's captured in JSR(Java Specification Requests)-380 and hibernate community implemented and maintained some of the most well known validator. 
+Spring includes it as part of it's dependency. 
 
 #### What's addressed by JSR-380
 `javax.validator.validation-api` has captured the JSR-380 requirements. It gives a framework to extend the validator as below.
