@@ -1,4 +1,4 @@
-package com.sf.customvalidator.constant;
+package com.sf.customvalidator.example.constant;
 
 public enum CustomerType {
     PERSON, ORGANIZATION

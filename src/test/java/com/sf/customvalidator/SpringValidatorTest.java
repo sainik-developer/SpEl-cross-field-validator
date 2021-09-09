@@ -1,9 +1,9 @@
 package com.sf.customvalidator;
 
-import com.sf.customvalidator.constant.Country;
-import com.sf.customvalidator.constant.CustomerType;
-import com.sf.customvalidator.dto.AddressDTO;
-import com.sf.customvalidator.dto.CustomerDTO;
+import com.sf.customvalidator.example.constant.Country;
+import com.sf.customvalidator.example.constant.CustomerType;
+import com.sf.customvalidator.example.dto.AddressDTO;
+import com.sf.customvalidator.example.dto.CustomerDTO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

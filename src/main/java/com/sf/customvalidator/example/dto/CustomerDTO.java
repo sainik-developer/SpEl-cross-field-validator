@@ -1,7 +1,7 @@
-package com.sf.customvalidator.dto;
+package com.sf.customvalidator.example.dto;
 
 
-import com.sf.customvalidator.constant.CustomerType;
+import com.sf.customvalidator.example.constant.CustomerType;
 import com.sf.customvalidator.validator.CrossFieldValidator;
 import com.sf.customvalidator.validator.SpElCrossFieldCondition;
 import lombok.Builder;
@@ -17,17 +17,17 @@ import java.util.List;
 @Data
 @Builder
 @CrossFieldValidator(groups = {PostMapping.class}, conditions = {
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION",
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).ORGANIZATION",
                 THEN = "surname==null"),
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION",
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).ORGANIZATION",
                 THEN = "dob == null AND doi != null"),
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION",
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).ORGANIZATION",
                 THEN = "addresses!=null AND addresses.size() == 1"),
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON",
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).PERSON",
                 THEN = "surname!=null AND !surname.isEmpty()"),
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON",
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).PERSON",
                 THEN = "dob != null AND doi == null"),
-        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON",
+        @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).PERSON",
                 THEN = "addresses!=null AND addresses.size() >= 1 AND addresses.size() <= 2")
 })
 public class CustomerDTO {

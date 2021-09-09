@@ -1,6 +1,6 @@
-package com.sf.customvalidator.api;
+package com.sf.customvalidator.example.api;
 
-import com.sf.customvalidator.dto.CustomerDTO;
+import com.sf.customvalidator.example.dto.CustomerDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
