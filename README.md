@@ -101,8 +101,9 @@ public class CustomerDTO {
     private CustomerType customerType;
 }
 ```
-It's not possible to enforce the restriction using default validators hence developer will opt for custom validator for `CustomerDTO` or write logic in service layer.
+It's not possible to enforce the restriction using default validators as there is no validator which cares about inter field constraints.
 
+Hence developer will opt for custom validator for `CustomerDTO` or write logic in service layer as below.
 ##### Below is the way explained how it can done by custom validator.
 ```java
 @Target({ ElementType.TYPE })
