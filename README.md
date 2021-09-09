@@ -134,11 +134,10 @@ public class CustomerValidatorImpl implements ConstraintValidator<CrossFieldVali
  }
 }
 ``` 
+This solution is verbose and DTO specific. Hence what if there is conditional cross-field validation required for `AddressDTO` which is nested object. 
+In that case using current approach we have to write an another custom validator related to `AddressDTO` which is generally done by developer. 
 
-But what is there is conditional cross-field validation required for `AddressDTO` nested object. In that case is current approach we have to write an another custom validator 
-related to AddressDTO. 
-
-#### What is sorted here to address above issue ? 
+#### What is solved using inter-field bean validator to address above issue ? 
 What if we just can declare our cross-field conditional restriction using annotation at POJO/DTO class as below
 
 ```java
