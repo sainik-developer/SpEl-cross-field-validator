@@ -122,17 +122,17 @@ What if we just can declare our cross-field conditional restriction using annota
 ```java
 @Data
 @CrossFieldValidator(groups = {PostMapping.class}, conditions = {
- @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION", 
+ @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).ORGANIZATION", 
                             THEN = "surname==null"),
- @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION", 
+ @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).ORGANIZATION", 
                             THEN = "dob == null AND doi != null"),
- @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).ORGANIZATION", 
+ @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).ORGANIZATION", 
                             THEN = "addresses!=null AND addresses.size() == 1"), 
- @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON", 
+ @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).PERSON", 
                             THEN = "surname!=null AND !surname.isEmpty()"),
- @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON", 
+ @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).PERSON", 
                             THEN = "dob != null AND doi == null"),
- @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.constant.CustomerType).PERSON", 
+ @SpElCrossFieldCondition(IF = "customerType == T(com.sf.customvalidator.example.constant.CustomerType).PERSON", 
                             THEN = "addresses!=null AND addresses.size() >= 1 AND addresses.size() <= 2")
 })
 public class CustomerDTO {
@@ -150,8 +150,8 @@ public class CustomerDTO {
 ```java
 @Data
 @CrossFieldValidator(groups = {PostMapping.class}, conditions = {
-        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.constant.Country).US OR country == T(com.sf.customvalidator.constant.Country).DE", THEN = "areaCode != null && areaCode.length == 5"),
-        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.constant.Country).IND", THEN = "areaCode != null && areaCode.length == 6")
+        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.example.constant.Country).US OR country == T(com.sf.customvalidator.example.constant.Country).DE", THEN = "areaCode != null && areaCode.length == 5"),
+        @SpElCrossFieldCondition(IF = "country == T(com.sf.customvalidator.example.constant.Country).IND", THEN = "areaCode != null && areaCode.length == 6")
 })
 public class AddressDTO {
     @NotEmpty(groups = {PostMapping.class})

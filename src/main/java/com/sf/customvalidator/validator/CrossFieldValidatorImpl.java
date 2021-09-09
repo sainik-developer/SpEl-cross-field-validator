@@ -13,9 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-/***
- *
- */
+
 public class CrossFieldValidatorImpl implements ConstraintValidator<CrossFieldValidator, Object> {
 
     private final ExpressionParser parser = new SpelExpressionParser();
