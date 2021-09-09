@@ -71,12 +71,12 @@ It's implemented by hibernate community and being used by spring
 Below is a sample class with fields and validation requirements as below.
 
 
-1. `name` should be not empty string. 
-2. `surname` should be non-empty for __PERSON__ and empty for __ORGANIZATION__ customerType.
-3. `dob` should be non-empty for __PERSON__ customerType but for __ORGANIZATION__ should be empty.
-4. `doi` should be empty for __PERSON__ but non-empty for __ORGANIZATION__ customerType.
-5. `addresses` should be size of one for __ORGANIZATION__ and can be two but at least one for __PERSON__ customerType.
-6. `customerType` should not be empty and one of the value of enum 
+1. `name` must be not empty string. 
+2. `surname` must be non-empty for __PERSON__ and must be empty for __ORGANIZATION__ customerType.
+3. `dob` must be non-empty for __PERSON__ customerType but for __ORGANIZATION__ must be empty.
+4. `doi` must be empty for __PERSON__ but must be non-empty for __ORGANIZATION__ customerType.
+5. `addresses` must be size of one for __ORGANIZATION__ and can be two but at least one for __PERSON__ customerType.
+6. `customerType` must not be empty and one of the value of enum 
 [CustomerType.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/main/java/com/sf/customvalidator/constant/CustomerType.java)
 
 Below a try to impose those validation using `javax.validator`. Now we can see main issue is the conditional validation requirements which here mainly 
