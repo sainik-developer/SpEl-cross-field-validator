@@ -13,8 +13,8 @@ Known benefits:
 ### Brief history of validator in Java
     
 Spring(J2EE)) is well familiar with POJO/DTO validator for a while, it's well organized, standardised by java community 
-and used by most. It's captured in JSR(Java Specification Requests)-380 and hibernate community implemented and maintained some of the most well known validator. 
-Spring includes it as part of it's dependency. 
+and used by most. It's captured in JSR(Java Specification Requests)-380 and hibernate community implemented and maintained some of the most well known validators. 
+Spring includes it as part of it's dependency hence has all the feature of validation as per JSR-380.
 
 #### What's addressed by JSR-380
 `javax.validator.validation-api` has captured the JSR-380 requirements. It gives a framework to extend the validator as below.
