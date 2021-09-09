@@ -121,6 +121,7 @@ public class AddressDTO {
 It's not possible to enforce the restriction using default validators as there is no validator which cares about inter field constraints.
 
 Hence developer will opt for custom validator for `CustomerDTO` or write logic in service layer as below.
+
 ##### Below is the way explained how it can done by custom validator.
 ```java
 @Target({ ElementType.TYPE })
@@ -206,13 +207,13 @@ public class AddressDTO {
     private String state;
 }
 ```
-
+All validation constraints are in same DTO as well defined using SpEl rather than verbose custom validator, which is would be not reusable.
+ 
 #### How to write condition for the validation ? 
 We have to use our spring expression language (SpEl) as expression in `IF` and `THEN` conditions, Documentation of spring expression language can be found in 
 [SpEl](https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html) 
 
 #### Implementation of generic validater is here
-
 [SpEl Cross field validator](https://github.com/sainik-developer/SpEl-cross-field-validator)
 you can have a look at implementation I am here to  talk about how it should be used rather internal details as those are not very interesting. 
 [CrossFieldValidatorImpl.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/main/java/com/sf/customvalidator/validator/CrossFieldValidatorImpl.java)
