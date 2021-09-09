@@ -46,11 +46,8 @@ public class CustomValidatorImpl implements ConstraintValidator<CrossFieldValida
     }
 }
 ```
-A default set of validator is implemented by hibernate community. 
-
-
-It came up with an extendable framework which allows user to implement their requirements when default validators does not support so user can extends it.
-These are validators specified in 
+Default validators are implemented by hibernate community. Framework allows user to implement their requirements when default validators don't support the validation constraints.
+Default validators are below 
 |                 |                   |               |                |
 |---------------- | ----------------- | ------------- | -------------- |
 | AssertFalse     | Future            | NotBlank      | Pattern        |
