@@ -68,8 +68,9 @@ It's implemented by hibernate community and being used by spring
 
 ### What is new
 #### What is inter-field bean validator ? 
-Below is a sample class which as few field. But suppose there is a requirements as below 
-Validation requirements 
+Below is a sample class with fields and validation requirements as below 
+
+
 1. `name` should be not empty string. 
 2. `surname` should be non-empty for __PERSON__ and empty for __ORGANIZATION__ customerType.
 3. `dob` should be non-empty for __PERSON__ customerType but for __ORGANIZATION__ should be empty.
