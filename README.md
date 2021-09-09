@@ -17,7 +17,7 @@ and used by most. It's captured in JSR(Java Specification Requests)-380 and hibe
 Spring includes it as part of it's dependency hence has all the feature of validation as per JSR-380.
 
 #### What's addressed by JSR-380
-`javax.validator.validation-api` has captured the JSR-380 requirements. It gives a framework to extend the validator as below.
+`javax.validator.validation-api` is code for the JSR-380 requirements. It gives a framework to extend the validator as below.
 
 ```java
 @Documented
