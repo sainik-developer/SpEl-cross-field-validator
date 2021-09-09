@@ -76,7 +76,7 @@ For CustomerDTO
 4. `doi` must be empty for __PERSON__ but must be non-empty for __ORGANIZATION__ customerType.
 5. `addresses` must be size of one for __ORGANIZATION__ and can be two but at least one for __PERSON__ customerType.
 6. `customerType` must not be empty and one of the value of enum 
-[CustomerType.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/main/java/com/sf/customvalidator/constant/CustomerType.java)
+[CustomerType.java](https://github.com/sainik-developer/SpEl-cross-field-validator/blob/main/src/test/java/com/sf/customvalidator/example/constant/CustomerType.java)
 
 For AddressDTO
 1. If country is USA or Germany then areaCode must be 5 digits long
